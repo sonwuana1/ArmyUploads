@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import * as sessionActions from "./store/session";
 import Navigation from './components/Navigation/';
 import ViewAllAlbums from './components/ViewAlbums/ViewAllAlbums';
+import PhotoShow from './components/PhotoShow/PhotoShow';
 
 
 
@@ -20,8 +21,11 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route exact path={["/", "/album", "/album/:albumId"]}>
+          <Route exact path="/">
             <ViewAllAlbums />
+          </Route>
+          <Route>
+            <PhotoShow path="/album/:albumId"/>
           </Route>
         </Switch>
       )}
