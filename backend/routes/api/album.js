@@ -9,21 +9,22 @@ const { handleValidationErrors } = require('../../utils/validation');
 const router = express.Router();
 
 
-router.get('/album', asyncHandler(async (req, res, next) => {
+router.get('', restoreUser, asyncHandler(async (req, res, next) => {
     // console.log('HEYYYYYYYY')
+    // console.log('HEYYYY', req.user.id)
     const allAlbums = await Album.findAll({
+        // where: {userId: req.user.id},
         include: Photo
     })
-    console.log(allAlbums)
-    // console.log(allAlbums[0].toJSON())
-    return allAlbums;
-    // return res.json(allAlbums);
+    // console.log(allAlbums)
+    res.json(allAlbums);
+    // return allAlbums;
 }))
 
 
 router.get('/album/:id', asyncHandler(async function(req, res) {
     const oneAlbum = await findByPk()
-    console.log(oneAlbum)
+    // console.log(oneAlbum)
     return res.json(oneAlbum);
   }));
 

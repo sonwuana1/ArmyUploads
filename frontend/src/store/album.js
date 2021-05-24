@@ -13,7 +13,7 @@ export const getAlbum = () => async dispatch => {
     if (response.ok) {
       const albums = await response.json();
       // console.log('ALBUMS', albums)
-      // prints an array of the albums obj
+      // prints an array of album objs
       dispatch(load(albums));
     }
 };
@@ -32,11 +32,11 @@ const albumReducer = (state = initialState, action) => {
       // return {
       //   ...allAlbums,
       //   ...state,
-      //   list: action.list,
+      //   albums: action.albums,
       // };
       return allAlbums;
     }
-    return state;
+  return state;
 }
 
 export default albumReducer;
