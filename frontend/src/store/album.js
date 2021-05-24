@@ -1,9 +1,9 @@
 
 const LOAD = 'album/LOAD';
 
-const load = list => ({
+const load = albums => ({
     type: LOAD,
-    list,
+    albums,
 });
 
 
@@ -11,30 +11,30 @@ export const getAlbum = () => async dispatch => {
     const response = await fetch(`/api/album`);
 
     if (response.ok) {
-      const list = await response.json();
-      dispatch(load(list));
+      const albums = await response.json();
+      // console.log('ALBUMS', albums)
+      // prints an array of the albums obj
+      dispatch(load(albums));
     }
 };
 
 
-const initialState = {
-    list: [],
-};
-
+const initialState = {};
 
 
 const albumReducer = (state = initialState, action) => {
     if (action.type === 'album/LOAD') {
-        const allAlbums = {};
-        console.log(action.list)
-        action.list.forEach(photo => {
-        allAlbums[photo.id] = photo;
+        const allAlbums = { ...state };
+        // console.log(action.albums)
+        action.albums.forEach(album => {
+        allAlbums[album.id] = album;
       });
-      return {
-        ...allAlbums,
-        ...state,
-        list: action.list,
-      };
+      // return {
+      //   ...allAlbums,
+      //   ...state,
+      //   list: action.list,
+      // };
+      return allAlbums;
     }
     return state;
 }

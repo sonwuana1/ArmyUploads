@@ -48,7 +48,8 @@ module.exports = (sequelize, DataTypes) => {
     // These scopes help protect sensitive user information that should not be exposed to other users
   });
   User.associate = function(models) {
-    // associations can be defined here
+    User.hasMany(models.Album, { foreignKey: 'userId', as: 'albums' })
+    User.hasMany(models.Photo, { foreignKey: 'userId', as: 'photos' })
   };
 
   User.prototype.toSafeObject = function() { // remember, this cannot be an arrow function
