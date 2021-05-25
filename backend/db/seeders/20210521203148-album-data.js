@@ -9,7 +9,13 @@ module.exports = {
       userId: 1,
       createdAt: new Date(),
       updatedAt: new Date()
-      }
+      },
+      {
+        name: 'Dynamite!!!',
+        userId: 1,
+        createdAt: new Date(),
+        updatedAt: new Date()
+        }
     ], {});
   },
 

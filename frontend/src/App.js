@@ -25,7 +25,7 @@ function App() {
             <ViewAllAlbums />
           </Route>
           <Route>
-            <PhotoShow path="/album/:albumId"/>
+            <PhotoShow path="/album/:id"/>
           </Route>
         </Switch>
       )}

@@ -11,7 +11,15 @@ module.exports = {
       albumId: 1,
       createdAt: new Date(),
       updatedAt: new Date()
-      }
+      },
+      {
+        name: 'dynamite-1',
+        photoLink: 'https://i.pinimg.com/564x/29/e0/1c/29e01c6520539364e4a26cbc82af1287.jpg',
+        userId: 1,
+        albumId: 2,
+        createdAt: new Date(),
+        updatedAt: new Date()
+        }
     ], {});
   },
 

@@ -26,7 +26,7 @@ export const getAlbum = () => async dispatch => {
 
 
 export const getOneAlbum = (id) => async dispatch => {
-  console.log(id)
+  // console.log(id)
   const response = await fetch(`/api/album/${id}`);
 
   if (response.ok) {
@@ -47,27 +47,9 @@ const albumReducer = (state = initialState, action) => {
         action.albums.forEach(album => {
         allAlbums[album.id] = album;
       });
-      // return {
-      //   ...allAlbums,
-      //   ...state,
-      //   albums: action.albums,
-      // };
       return allAlbums;
     }
-    if (action.type === 'album/ADD_ONE') {
-      // if (!state[action.oneAlbum.id]) {
-      //   const newState = {
-      //     ...state,
-      //     [action.oneAlbum.id]: action.oneAlbum
-      //   }
-      //   const
-      // }
-      const newAlbum = { ...state };
-        console.log(action.newAlbum)
-        // action.oneAlbum.forEach(album => {
-        // allAlbums[album.id] = album
-        // })
-    }
+
   return state;
 }
 
