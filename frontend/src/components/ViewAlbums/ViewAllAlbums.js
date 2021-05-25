@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, NavLink, Route, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './ViewAllAlbums.css';
 
 import { getAlbum } from '../../store/album';

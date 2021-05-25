@@ -32,7 +32,7 @@ export const getOneAlbum = (id) => async dispatch => {
   if (response.ok) {
     const oneAlbum = await response.json();
     // console.log('ALBUMS', oneAlbum)
-    dispatch(load(oneAlbum));
+    dispatch(addOneAlbum(oneAlbum));
   }
 }
 
@@ -48,6 +48,19 @@ const albumReducer = (state = initialState, action) => {
         allAlbums[album.id] = album;
       });
       return allAlbums;
+    }
+    if (action.type === 'album/ADD_ONE') {
+      if (!state[action.oneAlbum.id]) {
+        const newState = {
+          ...state,
+        [action.oneAlbum.id]: action.oneAlbum
+        }
+        const photoList = action.oneAlbum.Photos.map(pic => pic)
+        console.log(photoList)
+        return newState;
+        // console.log(action.oneAlbum.Photos)
+      }
+
     }
 
   return state;
