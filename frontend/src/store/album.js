@@ -55,12 +55,16 @@ const albumReducer = (state = initialState, action) => {
           ...state,
         [action.oneAlbum.id]: action.oneAlbum
         }
-        const photoList = action.oneAlbum.Photos.map(pic => pic)
+        const photoList = action.oneAlbum.map(id => newState[id])
         console.log(photoList)
+        photoList.push(action.oneAlbum)
         return newState;
-        // console.log(action.oneAlbum.Photos)
       }
-
+      return {
+        ...state, [action.oneAlbum.id]: {
+          ...state[action.oneAlbum.id], ...action.oneAlbum,
+        }
+      }
     }
 
   return state;

@@ -8,7 +8,7 @@ function PhotoShow() {
   const { id } = useParams();
   // console.log(id)
   const album = useSelector(state => state.album[id])
-  console.log(album)
+  // console.log(album)
 
   const dispatch = useDispatch();
 
@@ -21,10 +21,10 @@ function PhotoShow() {
 
   return (
     <div className="album-show">
-    <h2>Photos:</h2>
-    {album.Photos.map(pic => (
-      <img className='sleeping-album' src={pic.photoLink} alt='bts members sleeping'/>
-    ))}
+      <h2>Photos:</h2>
+      {album.Photos.map(pic => (
+        <img className='sleeping-album' src={pic.photoLink} alt='bts members sleeping'/>
+      ))}
     </div>
   )
 }
