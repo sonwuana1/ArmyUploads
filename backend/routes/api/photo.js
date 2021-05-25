@@ -18,4 +18,11 @@ router.get('/', restoreUser, asyncHandler(async (req, res, next) => {
 }))
 
 
+router.get('/:id', asyncHandler(async function(req, res) {
+    const onePhoto = await Photo.findByPk(req.params.id, {
+    })
+    return res.json(onePhoto);
+}));
+
+
 module.exports = router;

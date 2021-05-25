@@ -36,6 +36,22 @@ export const getOneAlbum = (id) => async dispatch => {
   }
 }
 
+export const createAlbum = (data) => async dispatch => {
+  const response = await fetch(`/api/album`, {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  })
+
+  if (response.ok) {
+    const album = await response.json();
+    dispatch(addOneAlbum(album));
+    return album;
+  }
+}
+
 
 const initialState = {};
 

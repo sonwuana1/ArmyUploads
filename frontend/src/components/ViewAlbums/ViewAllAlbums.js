@@ -1,13 +1,15 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import './ViewAllAlbums.css';
 
-import { getAlbum } from '../../store/album';
+import { getAlbum, createAlbum } from '../../store/album';
 
 
 const ViewAllAlbums = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
+  const [name, setName] = useState('');
 
   const album = useSelector(state => Object.values(state.album))
   // console.log(album)
@@ -20,6 +22,17 @@ const ViewAllAlbums = () => {
     return null;
   }
 
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const payload = { name }
+
+    const album = dispatch(createAlbum(payload));
+    if (payload) {
+        history.push(`/album/${album.id}`);
+    }
+  }
+
   return (
     <div className='albumContainer'>
       <h2 className='albumHeader'>View All Albums</h2>
@@ -30,6 +43,24 @@ const ViewAllAlbums = () => {
           </li>
         ))}
       </ul>
+      <form
+            className="album-form"
+            onSubmit={handleSubmit}>
+            <label>
+                Name
+                <input
+                    type="text"
+                    placeholder="Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                />
+            </label>
+            <button
+                type="submit"
+            >
+              Create Album
+            </button>
+        </form>
     </div>
   )
 }
