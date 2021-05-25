@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getOneAlbum } from '../../store/album';
+import './PhotoShow.css';
 
 
 function PhotoShow() {
@@ -22,8 +23,8 @@ function PhotoShow() {
   return (
     <div className="album-show">
       <h2>Photos:</h2>
-      {album.Photos.map(pic => (
-        <img className='sleeping-album' src={pic.photoLink} alt='bts members sleeping'/>
+      {album?.Photos.map(pic => (
+        <img className='photoContainer' src={pic.photoLink} alt='bts members'/>
       ))}
     </div>
   )

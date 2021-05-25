@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import * as sessionActions from "./store/session";
 import Navigation from './components/Navigation/';
 import ViewAllAlbums from './components/ViewAlbums/ViewAllAlbums';
+import ViewAllPhotos from './components/ViewAllPhotos/ViewAllPhotos';
 import PhotoShow from './components/PhotoShow/PhotoShow';
 
 
@@ -23,6 +24,7 @@ function App() {
         <Switch>
           <Route exact path="/">
             <ViewAllAlbums />
+            <ViewAllPhotos />
           </Route>
           <Route path="/album/:id">
             <PhotoShow />
