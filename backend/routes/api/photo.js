@@ -25,8 +25,9 @@ router.get('/:id', asyncHandler(async function(req, res) {
 }));
 
 
-router.post('/album/:id', restoreUser, asyncHandler( async(req, res, next) => {
+router.post('/', restoreUser, asyncHandler( async(req, res, next) => {
     const { name, photoLink, albumId } = req.body;
+    console.log('ALBUM_ID', albumId)
 
     const newPhoto = await Photo.create({
         name,

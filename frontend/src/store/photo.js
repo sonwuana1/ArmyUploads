@@ -17,7 +17,7 @@ const addOnePhoto = onePhoto => ({
 
 
 export const getPhotos = () => async dispatch => {
-    const response = await csrfFetch(`/api/photo`);
+    const response = await csrfFetch(`/api/album`);
 
     if (response.ok) {
       const photos = await response.json();
@@ -40,7 +40,7 @@ export const uploadPhoto = (data) => async dispatch => {
       dispatch(addOnePhoto(photo));
       return photo;
     }
-  }
+}
 
 
 const initialState = {};

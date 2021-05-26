@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-// import ImageUploader from 'react-images-upload';
 import { getOneAlbum } from '../../store/album';
 import { uploadPhoto } from '../../store/photo';
 import './PhotoShow.css';
@@ -11,20 +10,15 @@ function PhotoShow() {
   const { id } = useParams();
   // console.log(id)
   const album = useSelector(state => state.album[id])
-  // console.log(album)
+  // console.log(album.id)
+  const albumId = album?.id
 
   const [name, setName] = useState('');
   const [photoLink, setPhotoLink] = useState('')
-  // const [pictures, setPictures] = useState([]);
 
   const history = useHistory();
 
-  // const onDrop = picture => {
-  //   setPictures([...pictures, picture]);
-  // };
-
   const dispatch = useDispatch();
-
 
   useEffect(() => {
     if (id) {
@@ -35,11 +29,12 @@ function PhotoShow() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    const payload = { name, photoLink }
+    const payload = { name, photoLink, albumId }
+    console.log(payload)
 
     const photo = await dispatch(uploadPhoto(payload));
     if (photo) {
-      history.push(`/photo/${photo.id}`);
+      history.push(`/album/${albumId}`);
     }
   }
 
@@ -47,7 +42,9 @@ function PhotoShow() {
     <div className="album-show">
       <h2>Photos:</h2>
       {album?.Photos?.map(pic => (
-        <img className='photoContainer' src={pic.photoLink} alt='bts members'/>
+        <div>
+          <img className='photoContainer' src={pic.photoLink} alt='bts members'/>
+        </div>
       ))}
       <form
         className="photo-form"
@@ -70,19 +67,12 @@ function PhotoShow() {
             onChange={(e) => setPhotoLink(e.target.value)}
           />
           </label>
-          {/* <ImageUploader
-            withIcon={true}
-            onChange={onDrop}
-            imgExtension={[".jpg", ".jpeg", ".gif", ".png", ".gif"]}
-            maxFileSize={5242880}
-          /> */}
           <button
             type="submit"
           >
             Upload Photo
           </button>
       </form>
-
     </div>
   )
 }

@@ -11,7 +11,7 @@ function DeleteAlbumForm() {
     async function handleSubmit(e) {
         e.preventDefault();
 
-        const removedAlbum = await dispatch(deleteAlbum(id));
+        await dispatch(deleteAlbum(id));
         history.push(`/`);
     }
 
