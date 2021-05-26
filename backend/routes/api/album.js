@@ -40,13 +40,17 @@ router.post('/', restoreUser, asyncHandler( async(req, res, next) => {
 }))
 
 router.put('/:id', restoreUser, asyncHandler(async(req, res, next) => {
-    const { name } = req.body;
-
-    const updatedAlbum = await Album.update({
-        name,
-        userId: req.user.id
+    console.log('ALBUM_ID', req.params.id)
+    const currentAlbum = await Album.findByPk(req.params.id, {
+        include: Photo
     })
-    return res.json(updatedAlbum);
+    console.log(currentAlbum)
+
+    if (currentAlbum) {
+        const { name } = req.body;
+        await currentAlbum.update({ name })
+        return res.json(currentAlbum)
+    }
 }));
 
 

@@ -53,9 +53,9 @@ export const createAlbum = (data) => async dispatch => {
   }
 }
 
-export const updateAlbum = data => async dispatch => {
+export const updateAlbum = (id, data) => async dispatch => {
   console.log(data)
-  const response = await fetch(`/api/album/${data.id}`, {
+  const response = await csrfFetch(`/api/album/${id}`, {
     method: 'put',
     headers: {
       'Content-Type': 'application/json',

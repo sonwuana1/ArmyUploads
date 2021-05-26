@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { updateAlbum } from '../../store/album';
 
 
 function EditAlbumForm() {
     const dispatch = useDispatch();
     const history = useHistory();
-    const { id } = useParams();
-    // console.log(id)
+
     const [name, setName] = useState('');
 
     useEffect(() => {
@@ -22,9 +21,9 @@ function EditAlbumForm() {
         const payload = { name }
 
         const updatedAlbum = await dispatch(updateAlbum(payload));
-        console.log('NEWWWWW', updateAlbum)
+        console.log('NEWWWWW', updatedAlbum)
         if (updatedAlbum) {
-          history.push(`/album/${updateAlbum.id}`);
+          history.push(`/album/${updatedAlbum.id}`);
         }
     }
 
