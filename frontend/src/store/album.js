@@ -1,3 +1,4 @@
+import { csrfFetch } from './csrf';
 
 const LOAD = 'album/LOAD';
 const ADD_ONE = 'album/ADD_ONE'
@@ -14,7 +15,7 @@ const addOneAlbum = oneAlbum => ({
 
 
 export const getAlbum = () => async dispatch => {
-    const response = await fetch(`/api/album`);
+    const response = await csrfFetch(`/api/album`);
 
     if (response.ok) {
       const albums = await response.json();
@@ -27,7 +28,7 @@ export const getAlbum = () => async dispatch => {
 
 export const getOneAlbum = (id) => async dispatch => {
   // console.log(id)
-  const response = await fetch(`/api/album/${id}`);
+  const response = await csrfFetch(`/api/album/${id}`);
 
   if (response.ok) {
     const oneAlbum = await response.json();
@@ -37,7 +38,7 @@ export const getOneAlbum = (id) => async dispatch => {
 }
 
 export const createAlbum = (data) => async dispatch => {
-  const response = await fetch(`/api/album`, {
+  const response = await csrfFetch(`/api/album`, {
     method: 'post',
     headers: {
       'Content-Type': 'application/json',

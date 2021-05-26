@@ -22,14 +22,14 @@ const ViewAllAlbums = () => {
     return null;
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
     const payload = { name }
 
-    const album = dispatch(createAlbum(payload));
-    if (payload) {
-        history.push(`/album/${album.id}`);
+    const album = await dispatch(createAlbum(payload));
+    if (album) {
+      history.push(`/album/${album.id}`);
     }
   }
 
@@ -44,17 +44,17 @@ const ViewAllAlbums = () => {
         ))}
       </ul>
       <form
-            className="album-form"
-            onSubmit={handleSubmit}>
-            <label>
-                Name
-                <input
-                    type="text"
-                    placeholder="Name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                />
-            </label>
+        className="album-form"
+        onSubmit={handleSubmit}>
+          <label>
+              Name
+            <input
+              type="text"
+              placeholder="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </label>
             <button
                 type="submit"
             >

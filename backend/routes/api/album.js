@@ -12,7 +12,7 @@ const router = express.Router();
 router.get('/', restoreUser, asyncHandler(async (req, res, next) => {
     // console.log('HEYYYY', req.user.id)
     const allAlbums = await Album.findAll({
-        // where: {userId: req.session.user.id},
+        // where: {userId: req.user.id},
         include: Photo
     })
     // console.log(allAlbums)
@@ -31,10 +31,11 @@ router.get('/:id', asyncHandler(async function(req, res) {
 router.post('/', restoreUser, asyncHandler( async(req, res, next) => {
     const { name } = req.body;
 
-    const newAlbum = await Photo.create({
+    const newAlbum = await Album.create({
         name,
-        // userId: res.session.user.id
+        userId: req.user.id
     })
+    console.log(newAlbum)
     return res.json(newAlbum)
 }))
 

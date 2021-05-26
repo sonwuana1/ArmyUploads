@@ -25,4 +25,17 @@ router.get('/:id', asyncHandler(async function(req, res) {
 }));
 
 
+router.post('/', restoreUser, asyncHandler( async(req, res, next) => {
+    const { name, photoLink, albumId } = req.body;
+
+    const newPhoto = await Photo.create({
+        name,
+        photoLink,
+        userId: req.user.id,
+        albumId
+    })
+    console.log(newPhoto)
+    return res.json(newPhoto)
+}))
+
 module.exports = router;
