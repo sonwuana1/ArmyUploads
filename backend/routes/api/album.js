@@ -40,11 +40,11 @@ router.post('/', restoreUser, asyncHandler( async(req, res, next) => {
 }))
 
 router.put('/:id', restoreUser, asyncHandler(async(req, res, next) => {
-    console.log('ALBUM_ID', req.params.id)
+    // console.log('ALBUM_ID', req.params.id)
     const currentAlbum = await Album.findByPk(req.params.id, {
         include: Photo
     })
-    console.log(currentAlbum)
+    // console.log(currentAlbum)
 
     if (currentAlbum) {
         const { name } = req.body;
@@ -52,6 +52,17 @@ router.put('/:id', restoreUser, asyncHandler(async(req, res, next) => {
         return res.json(currentAlbum)
     }
 }));
+
+router.delete('/:id', restoreUser, asyncHandler(async(req, res, next) => {
+    const removedAlbum = await Album.findByPk(req.params.id, {
+        include: Photo
+    })
+
+    if (removedAlbum) {
+        await removedAlbum.destroy()
+        return res.json(removedAlbum)
+    }
+}))
 
 
 module.exports = router;

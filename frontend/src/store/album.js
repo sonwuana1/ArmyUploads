@@ -1,7 +1,8 @@
 import { csrfFetch } from './csrf';
 
 const LOAD = 'album/LOAD';
-const ADD_ONE = 'album/ADD_ONE'
+const ADD_ONE = 'album/ADD_ONE';
+const REMOVE_ONE = 'album/REMOVE_ONE';
 
 const load = albums => ({
     type: LOAD,
@@ -11,6 +12,12 @@ const load = albums => ({
 const addOneAlbum = oneAlbum => ({
   type: ADD_ONE,
   oneAlbum,
+});
+
+const remove = (id, userId) => ({
+  type: REMOVE_ONE,
+  id,
+  userId,
 });
 
 
@@ -54,7 +61,7 @@ export const createAlbum = (data) => async dispatch => {
 }
 
 export const updateAlbum = (id, data) => async dispatch => {
-  console.log(data)
+  // console.log(data)
   const response = await csrfFetch(`/api/album/${id}`, {
     method: 'put',
     headers: {
@@ -69,6 +76,17 @@ export const updateAlbum = (id, data) => async dispatch => {
     return album;
   }
 };
+
+export const deleteAlbum = (id) => async dispatch => {
+  const response = await csrfFetch(`/api/album/${id}`, {
+    method: 'delete',
+  })
+
+  if (response.ok) {
+    const album = await response.json();
+    dispatch(remove(album.id, album.userId));
+  }
+}
 
 
 const initialState = {};
@@ -89,9 +107,6 @@ const albumReducer = (state = initialState, action) => {
           ...state,
         [action.oneAlbum.id]: action.oneAlbum
         }
-        // const photoList = action.oneAlbum.map(id => newState[id])
-        // console.log(photoList)
-        // photoList.push(action.oneAlbum)
         return newState;
       }
       return {
@@ -99,6 +114,11 @@ const albumReducer = (state = initialState, action) => {
           ...state[action.oneAlbum.id], ...action.oneAlbum,
         }
       }
+    }
+    if (action.type === 'album/REMOVE_ONE') {
+      const newState = { ...state }
+      delete newState[action.id]
+      return newState;
     }
 
   return state;

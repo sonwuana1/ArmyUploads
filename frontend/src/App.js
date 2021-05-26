@@ -7,6 +7,7 @@ import ViewAllAlbums from './components/ViewAlbums/ViewAllAlbums';
 import ViewAllPhotos from './components/ViewAllPhotos/ViewAllPhotos';
 import PhotoShow from './components/PhotoShow/PhotoShow';
 import EditAlbumForm from "./components/EditAlbum/EditAlbumForm";
+import DeleteAlbumForm from "./components/DeleteAlbum/DeleteAlbumForm";
 
 
 
@@ -30,6 +31,7 @@ function App() {
           <Route path="/album/:id">
             <PhotoShow />
             <EditAlbumForm />
+            <DeleteAlbumForm />
           </Route>
         </Switch>
       )}

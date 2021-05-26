@@ -1,18 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { updateAlbum } from '../../store/album';
 
 
 function EditAlbumForm() {
     const dispatch = useDispatch();
+    const { id } = useParams();
+    // console.log(id)
     const history = useHistory();
 
     const [name, setName] = useState('');
-
-    useEffect(() => {
-        dispatch(updateAlbum());
-    }, [dispatch]);
 
 
     async function handleSubmit(e) {
@@ -20,10 +18,10 @@ function EditAlbumForm() {
 
         const payload = { name }
 
-        const updatedAlbum = await dispatch(updateAlbum(payload));
+        const updatedAlbum = await dispatch(updateAlbum(id, payload));
         console.log('NEWWWWW', updatedAlbum)
         if (updatedAlbum) {
-          history.push(`/album/${updatedAlbum.id}`);
+          history.push(`/`);
         }
     }
 
@@ -31,6 +29,7 @@ function EditAlbumForm() {
         <form
         className="update-album-form"
         onSubmit={handleSubmit}>
+        <div>
           <label>
               Name
             <input
@@ -40,11 +39,8 @@ function EditAlbumForm() {
               onChange={(e) => setName(e.target.value)}
             />
           </label>
-            <button
-                type="submit"
-            >
-              Update Album
-            </button>
+            <button type="submit">Update Album</button>
+        </div>
         </form>
     )
 
