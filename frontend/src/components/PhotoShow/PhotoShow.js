@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import ImageUploader from 'react-images-upload';
+// import ImageUploader from 'react-images-upload';
 import { getOneAlbum } from '../../store/album';
 import { uploadPhoto } from '../../store/photo';
 import './PhotoShow.css';
@@ -15,13 +15,13 @@ function PhotoShow() {
 
   const [name, setName] = useState('');
   const [photoLink, setPhotoLink] = useState('')
-  const [pictures, setPictures] = useState([]);
+  // const [pictures, setPictures] = useState([]);
 
   const history = useHistory();
 
-  const onDrop = picture => {
-    setPictures([...pictures, picture]);
-  };
+  // const onDrop = picture => {
+  //   setPictures([...pictures, picture]);
+  // };
 
   const dispatch = useDispatch();
 

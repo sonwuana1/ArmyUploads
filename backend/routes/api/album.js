@@ -35,9 +35,19 @@ router.post('/', restoreUser, asyncHandler( async(req, res, next) => {
         name,
         userId: req.user.id
     })
-    console.log(newAlbum)
+    // console.log(newAlbum)
     return res.json(newAlbum)
 }))
+
+router.put('/:id', restoreUser, asyncHandler(async(req, res, next) => {
+    const { name } = req.body;
+
+    const updatedAlbum = await Album.update({
+        name,
+        userId: req.user.id
+    })
+    return res.json(updatedAlbum);
+}));
 
 
 module.exports = router;
