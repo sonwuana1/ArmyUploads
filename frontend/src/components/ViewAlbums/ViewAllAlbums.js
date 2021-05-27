@@ -35,14 +35,14 @@ const ViewAllAlbums = () => {
 
   return (
     <div className='albumContainer'>
-      <h2 className='albumHeader'>View All Albums</h2>
-      <ul className='albumListContainer'>
+      <h2 className='albumHeader'>All Albums:</h2>
+      <h3 className='albumListContainer'>
         {album.map(obj => (
-          <li key={obj.name}>
+          <p>
             <Link to={`album/${obj.id}`}>{obj.name}</Link>
-          </li>
+          </p>
         ))}
-      </ul>
+      </h3>
       <form
         className="album-form"
         onSubmit={handleSubmit}>

@@ -1,10 +1,13 @@
-import { useEffect, useState } from 'react';
-import { useParams, useHistory } from "react-router-dom";
+import { useEffect } from 'react';
+import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getOnePhoto } from '../../store/photo';
+import { deletePhoto, getOnePhoto } from '../../store/photo';
+import DeletePhoto from '../DeletePhoto/DeletePhoto';
+import './ViewPhoto.css';
 
 function ViewPhoto() {
     const dispatch = useDispatch();
+    const history = useHistory();
     const { id } = useParams();
     // console.log(id)
     const photo = useSelector(state => state.photo[id])
@@ -16,9 +19,14 @@ function ViewPhoto() {
         }
       }, [dispatch, id]);
 
+    if (!id) {
+      history.push('/')
+    }
+
     return (
-        <div>
-            <img src={photo?.photoLink}></img>
+        <div className='singlePhotoPage'>
+            <img className='singlePhotoContainer' src={photo?.photoLink} alt=''></img>
+            <DeletePhoto />
         </div>
     )
 }

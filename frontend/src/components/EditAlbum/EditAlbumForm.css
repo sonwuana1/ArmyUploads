@@ -1,0 +1,37 @@
+.update-album-form {
+    width: auto;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.delete-album-form {
+    width: auto;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.photo-form {
+    width: auto;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: flex;
+    align-items: flex-end;
+    box-sizing: border-box;
+}
+
+.allAlbumPhotos {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.deletePhotoButton {
+    display: inline-block;
+    padding: 5px;
+    width: 50px;
+    margin: 5px;
+    float: left;
+}

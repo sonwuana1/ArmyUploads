@@ -3,7 +3,7 @@ import { useParams, useHistory, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getOneAlbum } from '../../store/album';
 import { uploadPhoto } from '../../store/photo';
-import './PhotoShow.css';
+import '../EditAlbum/EditAlbumForm.css';
 
 
 function PhotoShow() {
@@ -34,32 +34,36 @@ function PhotoShow() {
 
     const photo = await dispatch(uploadPhoto(payload));
     if (photo) {
-      history.push(`/album/${albumId}`);
+      history.push(`/`);
     }
   }
 
   return (
     <div className="photoOuterContainer">
       <h2 className='photoHeader'>Photos:</h2>
-      {album?.Photos?.map(pic => (
-        <div>
-          <Link to={`/photo/${pic.id}`}>
-            <img className='photoContainer' src={pic.photoLink} alt='bts members'/>
-          </Link>
-        </div>
-      ))}
+      <div className='allAlbumPhotos'>
+        {album?.Photos?.map(pic => (
+          <div>
+            <Link to={`/photo/${pic.id}`}>
+              <img className='photoContainer' src={pic.photoLink} alt='bts members'/>
+            </Link>
+          </div>
+        ))}
+      </div>
       <form
         className="photo-form"
         onSubmit={handleSubmit}>
-        <label>
-          Name of picture
-          <input
-            type="text"
-            placeholder="Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          </label>
+        <div>
+          <label>
+            Name of picture
+            <input
+              type="text"
+              placeholder="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            </label>
+          </div>
           <label>
             Link
           <input
@@ -69,11 +73,7 @@ function PhotoShow() {
             onChange={(e) => setPhotoLink(e.target.value)}
           />
           </label>
-          <button
-            type="submit"
-          >
-            Upload Photo
-          </button>
+          <button type="submit">Upload Photo</button>
       </form>
     </div>
   )

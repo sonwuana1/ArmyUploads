@@ -39,4 +39,15 @@ router.post('/', requireAuth, asyncHandler( async(req, res, next) => {
     return res.json(newPhoto)
 }))
 
+
+router.delete('/:id', requireAuth, asyncHandler(async(req, res, next) => {
+    const removedPhoto = await Photo.findByPk(req.params.id)
+
+    if (removedPhoto) {
+        await removedPhoto.destroy()
+        return res.json(removedPhoto)
+    }
+}))
+
+
 module.exports = router;

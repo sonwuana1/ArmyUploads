@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { deleteAlbum } from '../../store/album';
+import '../EditAlbum/EditAlbumForm.css';
 
 function DeleteAlbumForm() {
     const dispatch = useDispatch();
