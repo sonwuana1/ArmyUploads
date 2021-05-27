@@ -8,5 +8,10 @@
 
 .albumListContainer {
   display: flex;
+  flex-wrap: wrap-reverse;
   justify-content: space-around;
+}
+
+.all-albums-links {
+  text-decoration: none;
 }

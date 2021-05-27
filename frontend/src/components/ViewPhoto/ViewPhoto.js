@@ -25,6 +25,9 @@ function ViewPhoto() {
 
     return (
         <div className='singlePhotoPage'>
+          <div className='singlePhotoName'>
+            <label>{photo?.name}</label>
+          </div>
             <img className='singlePhotoContainer' src={photo?.photoLink} alt=''></img>
             <DeletePhoto />
         </div>

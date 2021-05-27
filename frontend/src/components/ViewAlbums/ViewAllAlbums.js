@@ -13,6 +13,8 @@ const ViewAllAlbums = () => {
 
   const album = useSelector(state => Object.values(state.album))
   // console.log(album)
+  const session = useSelector(state => Object.values(state.session))
+  // console.log(session)
 
   useEffect(() => {
     dispatch(getAlbum());
@@ -39,7 +41,7 @@ const ViewAllAlbums = () => {
       <h3 className='albumListContainer'>
         {album.map(obj => (
           <p>
-            <Link to={`album/${obj.id}`}>{obj.name}</Link>
+            <Link to={`album/${obj.id}`} className='all-albums-links'>{obj.name}</Link>
           </p>
         ))}
       </h3>

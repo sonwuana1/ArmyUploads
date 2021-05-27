@@ -9,6 +9,8 @@ import PhotoShow from './components/PhotoShow/PhotoShow';
 import EditAlbumForm from "./components/EditAlbum/EditAlbumForm";
 import DeleteAlbumForm from "./components/DeleteAlbum/DeleteAlbumForm";
 import ViewPhoto from "./components/ViewPhoto/ViewPhoto";
+import Footer from "./components/Footer/Footer";
+import AboutMe from "./components/AboutMe/AboutMe";
 
 
 
@@ -37,8 +39,12 @@ function App() {
           <Route path="/photo/:id">
             <ViewPhoto />
           </Route>
+          <Route path='/'>
+            <AboutMe />
+          </Route>
         </Switch>
       )}
+      <Footer />
     </>
   );
 }
