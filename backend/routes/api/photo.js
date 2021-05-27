@@ -10,7 +10,7 @@ const router = express.Router();
 
 
 
-router.get('/', restoreUser, asyncHandler(async (req, res, next) => {
+router.get('/', requireAuth, asyncHandler(async (req, res, next) => {
     const allPhotos = await Photo.findAll({
         // where: {userId: req.user.id},
     })
@@ -18,14 +18,14 @@ router.get('/', restoreUser, asyncHandler(async (req, res, next) => {
 }))
 
 
-router.get('/:id', asyncHandler(async function(req, res) {
+router.get('/:id', requireAuth, asyncHandler(async function(req, res) {
     const onePhoto = await Photo.findByPk(req.params.id, {
     })
     return res.json(onePhoto);
 }));
 
 
-router.post('/', restoreUser, asyncHandler( async(req, res, next) => {
+router.post('/', requireAuth, asyncHandler( async(req, res, next) => {
     const { name, photoLink, albumId } = req.body;
     console.log('ALBUM_ID', albumId)
 

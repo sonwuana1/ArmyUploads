@@ -2,7 +2,7 @@ import { csrfFetch } from './csrf';
 
 
 const LOAD = 'photo/LOAD';
-const ADD_ONE = 'album/ADD_ONE'
+const ADD_ONE = 'photo/ADD_ONE'
 
 
 const load = photos => ({
@@ -17,7 +17,7 @@ const addOnePhoto = onePhoto => ({
 
 
 export const getPhotos = () => async dispatch => {
-    const response = await csrfFetch(`/api/album`);
+    const response = await csrfFetch(`/api/photo`);
 
     if (response.ok) {
       const photos = await response.json();
@@ -25,6 +25,16 @@ export const getPhotos = () => async dispatch => {
       dispatch(load(photos));
     }
 };
+
+export const getOnePhoto= (id) => async dispatch => {
+  // console.log(id)
+  const response = await csrfFetch(`/api/photo/${id}`);
+
+  if (response.ok) {
+    const onePhoto = await response.json();
+    dispatch(addOnePhoto(onePhoto));
+  }
+}
 
 export const uploadPhoto = (data) => async dispatch => {
     const response = await csrfFetch(`/api/photo`, {

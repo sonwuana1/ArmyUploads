@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getOneAlbum } from '../../store/album';
 import { uploadPhoto } from '../../store/photo';
@@ -39,11 +39,13 @@ function PhotoShow() {
   }
 
   return (
-    <div className="album-show">
-      <h2>Photos:</h2>
+    <div className="photoOuterContainer">
+      <h2 className='photoHeader'>Photos:</h2>
       {album?.Photos?.map(pic => (
         <div>
-          <img className='photoContainer' src={pic.photoLink} alt='bts members'/>
+          <Link to={`/photo/${pic.id}`}>
+            <img className='photoContainer' src={pic.photoLink} alt='bts members'/>
+          </Link>
         </div>
       ))}
       <form

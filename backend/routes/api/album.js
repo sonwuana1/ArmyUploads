@@ -9,7 +9,7 @@ const { handleValidationErrors } = require('../../utils/validation');
 const router = express.Router();
 
 
-router.get('/', restoreUser, asyncHandler(async (req, res, next) => {
+router.get('/', requireAuth, asyncHandler(async (req, res, next) => {
     // console.log('HEYYYY', req.user.id)
     const allAlbums = await Album.findAll({
         // where: {userId: req.user.id},
@@ -20,7 +20,7 @@ router.get('/', restoreUser, asyncHandler(async (req, res, next) => {
 }))
 
 
-router.get('/:id', asyncHandler(async function(req, res) {
+router.get('/:id', requireAuth, asyncHandler(async function(req, res) {
     const oneAlbum = await Album.findByPk(req.params.id, {
         include: Photo
     })
@@ -28,7 +28,7 @@ router.get('/:id', asyncHandler(async function(req, res) {
     return res.json(oneAlbum);
 }));
 
-router.post('/', restoreUser, asyncHandler( async(req, res, next) => {
+router.post('/', requireAuth, asyncHandler( async(req, res, next) => {
     const { name } = req.body;
 
     const newAlbum = await Album.create({
@@ -39,7 +39,7 @@ router.post('/', restoreUser, asyncHandler( async(req, res, next) => {
     return res.json(newAlbum)
 }))
 
-router.put('/:id', restoreUser, asyncHandler(async(req, res, next) => {
+router.put('/:id', requireAuth, asyncHandler(async(req, res, next) => {
     // console.log('ALBUM_ID', req.params.id)
     const currentAlbum = await Album.findByPk(req.params.id, {
         include: Photo
@@ -53,7 +53,7 @@ router.put('/:id', restoreUser, asyncHandler(async(req, res, next) => {
     }
 }));
 
-router.delete('/:id', restoreUser, asyncHandler(async(req, res, next) => {
+router.delete('/:id', requireAuth, asyncHandler(async(req, res, next) => {
     const removedAlbum = await Album.findByPk(req.params.id, {
         include: Photo
     })

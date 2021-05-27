@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import '../PhotoShow/PhotoShow.css';
 
 import { getPhotos } from '../../store/photo';
+import { Link } from 'react-router-dom';
 
 function ViewAllPhotos() {
     const dispatch = useDispatch();
@@ -24,7 +25,9 @@ function ViewAllPhotos() {
             <div className="photoOutline">
                 {photos?.map(pic => (
                 <div className='container'>
-                <img key={pic.id} className='photoContainer' src={pic.photoLink} alt='bts members'/>
+                    <Link to={`/photo/${pic.id}`}>
+                        <img key={pic.id} className='photoContainer' src={pic.photoLink} alt='bts members'/>
+                    </Link>
                 </div>
                 ))}
             </div>
