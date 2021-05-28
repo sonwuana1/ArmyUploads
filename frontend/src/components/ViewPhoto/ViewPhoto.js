@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { deletePhoto, getOnePhoto } from '../../store/photo';
+import { getOnePhoto } from '../../store/photo';
 import DeletePhoto from '../DeletePhoto/DeletePhoto';
 import './ViewPhoto.css';
 

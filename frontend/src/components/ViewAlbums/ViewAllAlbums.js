@@ -13,8 +13,6 @@ const ViewAllAlbums = () => {
 
   const album = useSelector(state => Object.values(state.album))
   // console.log(album)
-  const session = useSelector(state => Object.values(state.session))
-  // console.log(session)
 
   useEffect(() => {
     dispatch(getAlbum());
