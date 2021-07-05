@@ -28,6 +28,17 @@ function LoginForm() {
       });
   }
 
+
+  const DemoLogin = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(sessionActions.login({credential:'demo@user.io', password:'password'}));
+    if (data.errors) {
+      setErrors(data.errors);
+    }
+  };
+
+
+
   return (
     <form onSubmit={handleSubmit}>
       <ul className="loginErrorsContainer">
@@ -53,6 +64,7 @@ function LoginForm() {
           />
         </label>
         <button type="submit" style={{cursor: 'pointer'}}>Log In</button>
+        <button type="submit" style={{cursor: 'pointer'}} onClick={DemoLogin}>Demo</button>
       </div>
     </form>
   );
