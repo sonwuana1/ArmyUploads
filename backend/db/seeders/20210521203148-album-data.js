@@ -15,7 +15,19 @@ module.exports = {
         userId: 1,
         createdAt: new Date(),
         updatedAt: new Date()
-        }
+        },
+        {
+          name: 'jungkook',
+          userId: 1,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          name: 'suga',
+          userId: 1,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
     ], {});
   },
 
