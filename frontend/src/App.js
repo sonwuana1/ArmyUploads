@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { Route, Switch } from 'react-router-dom';
 import * as sessionActions from "./store/session";
 import Navigation from './components/Navigation/';
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 import ViewAllAlbums from './components/ViewAlbums/ViewAllAlbums';
 import ViewAllPhotos from './components/ViewAllPhotos/ViewAllPhotos';
 import PhotoShow from './components/PhotoShow/PhotoShow';
@@ -11,6 +12,7 @@ import DeleteAlbumForm from "./components/DeleteAlbum/DeleteAlbumForm";
 import ViewPhoto from "./components/ViewPhoto/ViewPhoto";
 import Footer from "./components/Footer/Footer";
 import AboutMe from "./components/AboutMe/AboutMe";
+import LoginForm from "./components/LoginForm";
 
 
 
@@ -27,9 +29,13 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route exact path="/">
+          <ProtectedRoute path="/" exact={true}>
+            <AboutMe />
             <ViewAllAlbums />
             <ViewAllPhotos />
+          </ProtectedRoute>
+          <Route path="/login">
+            <LoginForm />
           </Route>
           <Route path="/album/:id">
             <PhotoShow />
@@ -38,9 +44,6 @@ function App() {
           </Route>
           <Route path="/photo/:id">
             <ViewPhoto />
-          </Route>
-          <Route path='/'>
-            <AboutMe />
           </Route>
         </Switch>
       )}
