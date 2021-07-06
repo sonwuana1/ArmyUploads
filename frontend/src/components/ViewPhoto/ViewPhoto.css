@@ -1,6 +1,7 @@
 .singlePhotoPage {
     display: flex;
     justify-content: center;
+    background: linear-gradient(white, #F2DFD7);
 
 }
 

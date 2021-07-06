@@ -33,6 +33,7 @@ function App() {
             <AboutMe />
             <ViewAllAlbums />
             <ViewAllPhotos />
+            <Footer />
           </ProtectedRoute>
           <Route path="/login">
             <LoginForm />
@@ -47,7 +48,7 @@ function App() {
           </Route>
         </Switch>
       )}
-      <Footer />
+
     </>
   );
 }

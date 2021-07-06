@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import './LoginForm.css'
 
 
 
@@ -40,33 +41,35 @@ function LoginForm() {
 
 
   return (
-    <form onSubmit={handleSubmit}>
-      <ul className="loginErrorsContainer">
-        {errors.map((error, idx) => <li key={idx} className="error-list">{error}</li>)}
-      </ul>
-      <div className="loginContainer">
-        <label>
-          Username or Email
-          <input
-            type="text"
-            value={credential}
-            onChange={(e) => setCredential(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit" style={{cursor: 'pointer'}}>Log In</button>
-        <button type="submit" style={{cursor: 'pointer'}} onClick={DemoLogin}>Demo</button>
-      </div>
-    </form>
+    <div className="loginContainer">
+      <form onSubmit={handleSubmit}>
+        <ul className="loginErrorsContainer">
+          {errors.map((error, idx) => <li key={idx} className="error-list">{error}</li>)}
+        </ul>
+        <div>
+          <label>
+            Username or Email
+            <input
+              type="text"
+              value={credential}
+              onChange={(e) => setCredential(e.target.value)}
+              required
+            />
+          </label>
+          <label>
+            Password
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </label>
+          <button type="submit" style={{cursor: 'pointer'}}>Log In</button>
+          <button type="submit" style={{cursor: 'pointer'}} onClick={DemoLogin}>Demo</button>
+        </div>
+      </form>
+    </div>
   );
 }
 

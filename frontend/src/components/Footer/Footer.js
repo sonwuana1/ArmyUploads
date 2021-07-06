@@ -6,11 +6,9 @@ function Footer() {
 
     return (
         <div className='footer-container'>
-            <h1 style={{ color: "green",
-                   textAlign: "center",
-            }}>
+            <h1>
                 <Link to={AboutMe} className="about-me-link">About Me</Link>
-      </h1>
+            </h1>
         </div>
     )
 }

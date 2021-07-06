@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getOneAlbum } from '../../store/album';
 import { uploadPhoto } from '../../store/photo';
 import '../EditAlbum/EditAlbumForm.css';
+import './PhotoShow.css'
 
 
 function PhotoShow() {

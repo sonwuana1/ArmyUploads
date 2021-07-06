@@ -11,6 +11,7 @@
 .photoOuterContainer {
     display: flex;
     flex-wrap: wrap;
+    background-color: linear-gradient(white, #F2DFD7);
 
 }
 
