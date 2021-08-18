@@ -45,12 +45,27 @@ export const getOnePhoto= (id) => async dispatch => {
 }
 
 export const uploadPhoto = (data) => async dispatch => {
+  const { images, image, name, albumId } = data;
+  const formData = new FormData();
+  formData.append("name", name);
+  formData.append("albumId", albumId);
+
+  // for multiple files
+  if (images && images.length !== 0) {
+    for (var i = 0; i < images.length; i++) {
+      formData.append("images", images[i]);
+    }
+  }
+
+  // for single file
+  if (image) formData.append("image", image);
+
     const response = await csrfFetch(`/api/photo`, {
       method: 'post',
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "multipart/form-data",
       },
-      body: JSON.stringify(data),
+      body: formData,
     })
 
     if (response.ok) {
