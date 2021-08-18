@@ -83,6 +83,7 @@ export const createUser = (user) => async (dispatch) => {
   dispatch(setUser(data.user));
 };
 
+
 export const logout = () => async (dispatch) => {
   const response = await csrfFetch('/api/session', {
     method: 'DELETE',

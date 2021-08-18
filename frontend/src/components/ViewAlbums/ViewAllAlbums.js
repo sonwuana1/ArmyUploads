@@ -29,7 +29,7 @@ const ViewAllAlbums = () => {
 
     const album = await dispatch(createAlbum(payload));
     if (album) {
-      history.push(`/album/${album.id}`);
+      history.push(`/`);
     }
   }
 
