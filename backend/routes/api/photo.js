@@ -5,6 +5,12 @@ const { requireAuth, restoreUser } = require('../../utils/auth');
 const { User, Album, Photo } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
+const {
+    singleMulterUpload,
+    singlePublicFileUpload,
+    multipleMulterUpload,
+    multiplePublicFileUpload,
+  } = require("../../awsS3");
 
 const router = express.Router();
 
@@ -25,18 +31,20 @@ router.get('/:id', requireAuth, asyncHandler(async function(req, res) {
 }));
 
 
-router.post('/', requireAuth, asyncHandler( async(req, res, next) => {
-    const { name, photoLink, albumId } = req.body;
-    console.log('ALBUM_ID', albumId)
+router.post('/', requireAuth, singleMulterUpload("image"),
+    asyncHandler( async(req, res, next) => {
+        const { name, albumId } = req.body;
+        const imageUrl = await singlePublicFileUpload(req.file);
+        // console.log('ALBUM_ID', albumId)
 
-    const newPhoto = await Photo.create({
-        name,
-        photoLink,
-        userId: req.user.id,
-        albumId
-    })
-    console.log('HEYYYY', newPhoto)
-    return res.json(newPhoto)
+        const newPhoto = await Photo.create({
+            name,
+            photoLink: imageUrl,
+            userId: req.user.id,
+            albumId
+        })
+        // console.log('HEYYYY', newPhoto)
+        return res.json(newPhoto)
 }))
 
 

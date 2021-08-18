@@ -15,7 +15,7 @@ function PhotoShow() {
   const albumId = album?.id
 
   const [name, setName] = useState('');
-  const [photoLink, setPhotoLink] = useState('')
+  const [image, setImage] = useState(null);
 
   const history = useHistory();
 
@@ -30,13 +30,18 @@ function PhotoShow() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    const payload = { name, photoLink, albumId }
+    const payload = { name, image, albumId }
     console.log(payload)
 
     const photo = await dispatch(uploadPhoto(payload));
     if (photo) {
       history.push(`/`);
     }
+  }
+
+  const updateFile = (e) => {
+    const file = e.target.files[0];
+    if (file) setImage(file);
   }
 
   return (
@@ -66,12 +71,9 @@ function PhotoShow() {
             </label>
           </div>
           <label>
-            Link
           <input
-            type="text"
-            placeholder="Link"
-            value={photoLink}
-            onChange={(e) => setPhotoLink(e.target.value)}
+            type="file"
+            onChange={updateFile}
           />
           </label>
           <button type="submit">Upload Photo</button>

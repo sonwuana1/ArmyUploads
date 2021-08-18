@@ -12,7 +12,7 @@ const router = express.Router();
 router.get('/', requireAuth, asyncHandler(async (req, res, next) => {
     // console.log('HEYYYY', req.user.id)
     const allAlbums = await Album.findAll({
-        // where: {userId: req.user.id},
+        where: {userId: req.user.id},
         include: Photo
     })
     // console.log(allAlbums)
