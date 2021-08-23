@@ -11,12 +11,13 @@
 .photoOuterContainer {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     background-color: linear-gradient(white, #F2DFD7);
 
 }
 
 .photoContainer {
-    display: flex;
+    /* display: flex; */
     border: 2px solid black;
     border-radius: 4px;
     padding: 5px;

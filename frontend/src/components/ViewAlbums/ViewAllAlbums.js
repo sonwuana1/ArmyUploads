@@ -35,7 +35,7 @@ const ViewAllAlbums = () => {
 
   return (
     <div className='albumContainer'>
-      <h2 className='albumHeader'>All Albums:</h2>
+      <h2 className='albumHeader'>Your Current Albums:</h2>
       <h3 className='albumListContainer'>
         {album.map(obj => (
           <p>

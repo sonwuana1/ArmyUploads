@@ -6,6 +6,11 @@
     padding: 1rem 2rem;
 }
 
+.albumHeader {
+  display: flex;
+  justify-content: center;
+}
+
 .albumListContainer {
   display: flex;
   flex-wrap: wrap-reverse;
