@@ -2,7 +2,7 @@
 function AboutMe() {
 
     return (
-        <div>Developer:</div>
+        <div></div>
     )
 }
 
