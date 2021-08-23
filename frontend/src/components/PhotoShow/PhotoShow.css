@@ -11,25 +11,26 @@
 .photoOuterContainer {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     background-color: linear-gradient(white, #F2DFD7);
 
 }
 
 .photoContainer {
-    display: flex;
-    border: 2px solid black;
-    border-radius: 4px;
+    /* display: flex; */
+    /* border: 2px; */
+    /* border-radius: 4px; */
     padding: 5px;
     width: 150px;
-    margin: 5px;
+    margin: 1px;
     float: left;
 }
 
 .photoOutline {
     display: flex;
     width: auto;
-    background-color: rgba(255, 255, 255, 0.5);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /* background-color: rgba(255, 255, 255, 0.5); */
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 
 }
 

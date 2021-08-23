@@ -1,9 +1,14 @@
 .albumContainer {
     margin: 1rem 0;
-    background: #D4C1EC;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-    color: white;
+    /* background: rgba(219, 166, 241, 0.6); */
+    /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); */
+    /* color: white; */
     padding: 1rem 2rem;
+}
+
+.albumHeader {
+  display: flex;
+  justify-content: center;
 }
 
 .albumListContainer {
@@ -13,5 +18,7 @@
 }
 
 .all-albums-links {
+  display: grid;
+  justify-items: center;
   text-decoration: none;
 }

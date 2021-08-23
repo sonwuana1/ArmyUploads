@@ -31,7 +31,7 @@ function PhotoShow() {
     e.preventDefault();
 
     const payload = { name, image, albumId }
-    console.log(payload)
+    // console.log(payload)
 
     const photo = await dispatch(uploadPhoto(payload));
     if (photo) {

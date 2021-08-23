@@ -21,10 +21,10 @@ function ViewAllPhotos() {
 
     return (
         <div className="photoOuterContainer">
-            <h2>All Photos:</h2>
+            <h2>Everyone's Photos:</h2>
             <div className="photoOutline">
                 {photos?.map(pic => (
-                <div className='container'>
+                <div className=''>
                     <Link to={`/photo/${pic.id}`}>
                         <img key={pic.id} className='photoContainer' src={pic.photoLink} alt='bts members'/>
                     </Link>

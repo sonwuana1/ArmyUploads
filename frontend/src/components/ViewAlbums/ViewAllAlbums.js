@@ -35,11 +35,14 @@ const ViewAllAlbums = () => {
 
   return (
     <div className='albumContainer'>
-      <h2 className='albumHeader'>All Albums:</h2>
+      <h2 className='albumHeader'>Your Current Albums:</h2>
       <h3 className='albumListContainer'>
         {album.map(obj => (
           <p>
-            <Link to={`album/${obj.id}`} className='all-albums-links'>{obj.name}</Link>
+            <Link to={`album/${obj.id}`} className='all-albums-links'>
+              <img src='/pics/album_gallery_icon.png' alt='' />
+              {obj.name}
+            </Link>
           </p>
         ))}
       </h3>
