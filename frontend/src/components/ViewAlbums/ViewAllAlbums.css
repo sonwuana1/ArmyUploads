@@ -13,5 +13,7 @@
 }
 
 .all-albums-links {
+  display: grid;
+  justify-items: center;
   text-decoration: none;
 }
